@@ -1,7 +1,16 @@
 public class largest elem in arr {
 
   class Solution {
-    public static int largest(int[] arr) {
+      // brute force
+     public static int largest1(int[] arr) {
+        // code here
+        int n = arr.length;
+        Arrays.sort(arr);
+        return arr[n-1];
+       
+    }
+    // optimal
+    public static int largest2(int[] arr) {
         // code here
         int max = Integer.MIN_VALUE;
         int n = arr.length;
