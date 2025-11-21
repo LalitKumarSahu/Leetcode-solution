@@ -46,3 +46,5 @@ class Solution {
         return word.toLowerCase().replaceAll("[aeiou]", "*");
     }
 }
+
+// lalit kumar
