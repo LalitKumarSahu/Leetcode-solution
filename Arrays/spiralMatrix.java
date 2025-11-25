@@ -37,3 +37,45 @@ public class spiralMatrix {
         }
     }
 }
+
+// spiral matrix find kth
+
+class Solution {
+
+    public int findK(int a[][], int n, int m, int k) {
+       int stR = 0;
+       int stC = 0;
+       int endR = n-1;
+       int endC = m-1;
+       
+       int count = 0;
+       while(stR <= endR && stC <= endC){
+           for(int j = stC; j <= endC; j++){
+               count++;
+               if(count == k) return a[stR][j];
+           }
+           stR++;
+           for(int i = stR; i<= endR; i++ ){
+               count++;
+               if(count == k) return a[i][endC];
+           }
+           endC--;
+           if(stR <= endR){
+           for(int j = endC; j >= stC; j--){
+               count++;
+               if(count == k) return a[endR][j];
+            }
+            endR--;
+           }
+           
+           if(stC <= endC){
+           for(int i = endR; i >= stR; i--){
+               count++;
+               if(count == k) return a[i][stC];
+           }
+           stC++;
+           }
+       }
+       return -1;
+    }
+}
