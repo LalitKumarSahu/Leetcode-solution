@@ -27,8 +27,7 @@ public class 3 sum {
 
         return new ArrayList<>(set);
     }
-
-  }
+    }
 
    // better soln
     public List<List<Integer>> threeSum2(int[] nums) {
