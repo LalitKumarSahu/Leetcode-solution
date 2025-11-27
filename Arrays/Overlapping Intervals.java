@@ -16,7 +16,7 @@ class Solution {
             int start = arr[i][0];
             int end   = arr[i][1];
 
-            if (start <= curr[1]) {
+            if (curr[1] >= start) {
                 // Overlap → merge
                 curr[1] = Math.max(curr[1], end);
             } else {
