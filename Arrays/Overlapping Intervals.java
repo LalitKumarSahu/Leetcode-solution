@@ -1,6 +1,20 @@
 import java.util.*;
 
 class Solution {
+       // brute foce
+    // public int[][] mergeOverlap(int[][] arr) {
+    //       for i = 0 → n-1
+    //        for j = i+1 → n-1
+    //        if arr[i][0] <= arr[j][1]  AND arr[j][0] <= arr[i][1]
+    //         newStart = min(arr[i][0], arr[j][0])
+    //         newEnd   = max(arr[i][1], arr[j][1])
+
+    //         arr[i] = [newStart, newEnd]
+
+
+// }
+    
+// optimal soln
     public int[][] mergeOverlap(int[][] arr) {
         // Step 1: Sort by starting time
         Arrays.sort(arr, (a, b) -> a[0] - b[0]);
