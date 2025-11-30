@@ -16,9 +16,11 @@ class Solution {
         }
         //Loop: start se lekar 9 tak loop chalta hai. Har number ko currentList me add kiya jaata hai, aur fir backtrack method recursively call hota hai, saath hi n - i aur i + 1 parameters pass hote hain.
         for (int i = start; i <= 9; i++) {
+            if(i <= n){
             currentList.add(i);
             backtrack(result, currentList, k, n - i, i + 1);
             currentList.remove(currentList.size() - 1); // backtrack
+            }
         }
     }
 }
