@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class RateInMaze {
   class Solution {
 
@@ -52,7 +55,9 @@ public class RateInMaze {
 
     // Check if move is safe
     public boolean isSafe(int[][] grid, int x, int y, boolean vis[][], int n) {
-        return (x >= 0 && x < n &&
+      // x row index 0 se n-1 tak allowed
+      //y column index 0 se n-1 tak allowed
+      return (x >= 0 && x < n &&
                 y >= 0 && y < n &&
                 grid[x][y] == 1 &&
                 !vis[x][y]);
