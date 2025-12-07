@@ -33,7 +33,7 @@ public class 2nd largest {
   }
 
  
-  // m-2 better
+  // m-3 optimal
    public static int secLargest(int arr[]){
       int n = arr.length;
       int fisrtLargest = arr[0];

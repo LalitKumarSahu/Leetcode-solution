@@ -1,3 +1,4 @@
+import java.*;
 public class Remove Duplicates Sorted Array {
   class Solution {
     // Function to remove duplicates from the given array.
