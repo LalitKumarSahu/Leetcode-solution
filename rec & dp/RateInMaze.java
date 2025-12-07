@@ -49,7 +49,7 @@ public class RateInMaze {
         if (isSafe(grid, x - 1, y, vis, n))
             solveUtil(grid, x - 1, y, vis, n, path + "U", paths);
 
-        // Backtrack
+        // Backtrack and false mark
         vis[x][y] = false;
     }
 
