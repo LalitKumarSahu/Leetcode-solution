@@ -47,7 +47,7 @@ public class 2nd largest {
           secLargest = arr[i];
         }
       }
-        return (secondLargest == Integer.MIN_VALUE) ? -1 : secondLargest;
+        return (secLargest == Integer.MIN_VALUE) ? -1 : secLargest;
 
   }
 

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class M-ColoringProblem {
+public class MColoring {
   class Solution {
     boolean graphColoring(int v, int[][] edges, int m) {
         int[] color = new int[v];   // color array initially zero (no color)
