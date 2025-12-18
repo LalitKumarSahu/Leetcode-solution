@@ -16,7 +16,16 @@ public class Subsets I {
       fcn(nums, idx+1, sum + nums[idx], N, subsetSums);
 
       // no pick
-      fcn(nums, idx+1, N, subsetSums);
+      fcn(nums, idx+1, sum, N, subsetSums);
     }
 }
 }
+
+/*
+[]        → sum = 0
+[1]       → sum = 1
+[2]       → sum = 2
+[1, 2]    → sum = 3
+o/p = [0, 1, 2, 3]
+
+ */

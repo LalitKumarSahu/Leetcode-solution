@@ -20,7 +20,7 @@ public class SubsetsII {
         
         for (int i = idx; i < nums.length; i++) {
             
-            // duplicate skip condition
+            // duplicate skip condition, --Same recursion level me duplicate element mat uthao
             if (i != idx && nums[i] == nums[i - 1]) 
                 continue;
 
