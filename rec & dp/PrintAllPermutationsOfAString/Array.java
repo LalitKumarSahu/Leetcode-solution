@@ -28,3 +28,37 @@ public class Array {
   }
   
 }
+
+// method 2: swapping elements in the array itself
+public class Array {
+
+  public List<List<Integer>> permute(int[] nums) {
+    List<List<Integer>> res = new ArrayList<>();
+    permuteHelper(nums, 0, res);
+    return res;
+  }
+
+  private void permuteHelper(int[] nums, int idx, List<List<Integer>> res) {
+    if (idx == nums.length) {
+      List<Integer> curr = new ArrayList<>();
+      for (int num : nums) {
+        curr.add(num);
+      }
+      res.add(curr);
+      return;
+    }
+
+    for (int i = idx; i < nums.length; i++) {
+      swap(nums, idx, i);
+      permuteHelper(nums, idx + 1, res);
+      swap(nums, idx, i); // backtrack
+    }
+  }
+
+  private void swap(int[] nums, int i, int j) {
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+  }
+  
+}

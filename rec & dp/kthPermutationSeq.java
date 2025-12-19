@@ -3,7 +3,7 @@ public class kthPermutationSeq {
   public  String getPermutation(int n , int k){
     int fact = 1;
     List<Integer> numbers = new ArrayList<>();
-    for(int i =1 ; i < n ; i++){
+    for(int i =1 ; i < n ; i++){ // n-1 tak fact
       fact = fact * i;
       numbers.add(i);
   }
@@ -17,7 +17,7 @@ public class kthPermutationSeq {
       break;
     }
     k = k % fact;
-    fact = fact / numbers.size();
+    fact = fact / numbers.size(); // 3! = 6, 2! = 6/3 = 2
   }
   return ans;
 
