@@ -10,7 +10,7 @@ public class RateInMaze {
             List<String> paths = new ArrayList<>();
             boolean vis[][] = new boolean[n][n];
 
-            // If starting cell is blocked
+            // If starting cell is zero, return empty list
             if (grid[0][0] == 0)
                 return paths;
 

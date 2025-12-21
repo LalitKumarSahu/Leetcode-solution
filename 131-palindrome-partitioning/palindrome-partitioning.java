@@ -1,3 +1,4 @@
+import java.util.*;
 class Solution {
     //tc:(2^N) + N , sc:O(N)
 
@@ -9,7 +10,7 @@ class Solution {
         return res;
     }
   
-    public void recBack(String s, int partionIdx, List<String>curr,    List<List<String>>res  ){
+    public void recBack(String s, int partionIdx, List<String>curr, List<List<String>>res  ){
         int n = s.length();
         if(partionIdx == n){
           res.add(new ArrayList<>(curr));

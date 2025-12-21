@@ -17,7 +17,7 @@ public class Array {
     }
 
     for (int i = 0; i < nums.length; i++) {
-      if (vis[i]) continue;
+      if (vis[i]) continue; // i is already  visited
 
       vis[i] = true;
       curr.add(nums[i]);
