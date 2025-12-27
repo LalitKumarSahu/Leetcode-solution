@@ -40,6 +40,6 @@ public class AsteroidCollision {
             ansArr[i] = s.pop();
         }
         return ansArr;
-    }
+    } 
 }
 }
