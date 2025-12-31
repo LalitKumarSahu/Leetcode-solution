@@ -1,4 +1,5 @@
-public class The CelebrityProblem {
+import java.util.*;
+public class TheCelebrityProblem {
   // Celebrity kisi ko nahi jaanta → mat[c][i] == 0
 
 //Sab celebrity ko jaante hain → mat[i][c] == 1 (i ≠ c)
