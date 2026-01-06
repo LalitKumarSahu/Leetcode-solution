@@ -32,3 +32,26 @@ public class InsertInterval {
        return res;
     }
 }
+
+
+// m-2 brute force by findnmaxOverlap
+class Solution {
+    static int findPlatform(int arr[], int dep[], int n) {
+
+        int maxOverlap = 0;
+
+        for (int i = 0; i < n; i++) {
+            int overlap = 1; // current train itself
+
+            for (int j = 0; j < n; j++) {
+                if (i != j &&
+                    arr[i] < dep[j] &&
+                    arr[j] < dep[i]) {
+                    overlap++;
+                }
+            }
+            maxOverlap = Math.max(maxOverlap, overlap);
+        }
+        return maxOverlap;
+    }
+}
