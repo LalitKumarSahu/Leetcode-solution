@@ -64,6 +64,42 @@ public class Candy {
 
         
     }
+    
 
+    // optimal soln by using slope method
+    // m-3 optimal soln
+         public int candy3(int[] ratings) {
+         int n = ratings.length;
+         int i = 1;
+         int sum = 1;
+
+         while( i < n){
+            // flat slope
+            if(ratings[i] == ratings[i-1]){
+                sum = sum + 1;
+                i++;
+                continue;
+            }
+            // inc slope
+            int peak = 1;
+            while(i < n && ratings[i] > ratings[i-1]){
+                peak += 1;
+                sum += peak;
+                i++;
+            }
+            // dec slope
+            int down = 1;
+             while(i < n && ratings[i] < ratings[i-1]){
+                sum += down;
+                i++;
+                down += 1;
+            }
+            // peak adjustment
+            if(down > peak){
+                sum += down - peak;
+            }
+         }
+        return sum;
+    }
 }
 
