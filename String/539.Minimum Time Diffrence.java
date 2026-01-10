@@ -1,4 +1,5 @@
 class Solution {
+    //m-1 covert into min, sort, then find adjacent diff
     public int findMinDifference(List<String> timePoints) {
         // convert input to minutes
         int[] minutes = new int[timePoints.size()];
@@ -28,6 +29,7 @@ class Solution {
 
 // m-2 optimize tc by using bucket sort
 class Solution {
+
     public int findMinDifference(List<String> timePoints) {
         // convert input to minutes
         boolean[] mins = new boolean[1440];
@@ -44,7 +46,7 @@ class Solution {
         int firstVal = -1;
         int minDiff = Integer.MAX_VALUE;
         for (int curr = 0; curr < 1440; curr++) {
-            if(mins[curr]){
+            if(mins[curr]){ // true hai
                 if(prev == -1){
                     firstVal = curr;
                     prev = curr;
