@@ -12,11 +12,13 @@ class Solution {
 }
 
      // m-2
+       
+   public String lalit2(String s, int[] spaces) {
        StringBuilder res = new StringBuilder();
        int spaceIdx = 0;
        int n = s.length();
        int m = spaces.length;
-       for(int i = 0; i < n; i++){
+       for(int i = 0; i < n; i++){ // iterate on string
            if(spaceIdx < m && spaces[spaceIdx] == i){
             res.append(" ");
             spaceIdx++;
@@ -26,23 +28,4 @@ class Solution {
        return res.toString();
        
     }
-}
-
-//--------->Manmeet's code<------------
-   
-    int i = 0, j = 0, indx = 0;
-    StringBuilder ans = new StringBuilder();
-    while(j != spaces.length) {
-        indx = spaces[j];
-        ans.append(s,i, indx);
-        ans.append(" ");
-        i = indx; 
-        j++;
-    }
-    ans.append(s, i, s.length());
-    
-    return ans.toString();
-    }
-}
-
 
