@@ -1,3 +1,4 @@
+import java.util.*;
 public class 4Sum {
   class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
