@@ -1,3 +1,4 @@
+import java.util.*;
 class Solution {
     int maxLength(int arr[]) {
         HashMap<Integer, Integer> map = new HashMap<>();
