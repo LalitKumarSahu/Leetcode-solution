@@ -1,8 +1,6 @@
-package stack & queue;
+import java.util.Stack;
 
 public class Infix to Postfix {
-  
-  import java.util.Stack;
 
 class Solution {
 
@@ -44,6 +42,8 @@ class Solution {
             }
 
             // 4️⃣ If operator
+            // stack ke peek ka opeartor less hai ch se to stack me dal denge
+            // agr less than hai to stack se pop karnge peek vala ans me add kar denge aur curr ch ko stack me dal denge
             else {
                 while (!st.isEmpty() &&
                       (precedence(st.peek()) > precedence(ch) ||
