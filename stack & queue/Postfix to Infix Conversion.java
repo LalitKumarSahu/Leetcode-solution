@@ -1,7 +1,5 @@
   import java.util.Stack;
 public class Postfix to Infix Conversion {
-
-
 class Solution {
 
     // ⚠️ Method name SAME as driver code

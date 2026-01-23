@@ -2,7 +2,9 @@
 import java.util.Stack;
 public class infixToPrefix {
 
-
+// s:1 reverse the infix also in reverse (->), )->( opening ko closing and closing to opening
+// s:2 infix to postfix
+// s:3 reverse the answer
 class Solution {
 
     static int precedence(char ch) {
