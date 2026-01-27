@@ -28,5 +28,29 @@ public class FindBottomLeftTreeValue {
         return ans; // last level ka leftmost value
     }
 }
+   
+// m-2 by using dfs
+class Solution2{
+    int maxDepth = -1;
+    int ans = -1;
+    public int findBottomLeftValue2(TreeNode root) {
+      dfs(root, 0);
+      return ans;
+    }
+    public void dfs2(TreeNode root, int depth){
+        //postorder
+        if(root == null){
+            return;
+        }
+        // root
+        if(depth > maxDepth){
+            maxDepth = depth;
+            ans = root.val;
+        }
+        //left,right
+        dfs(root.left, depth+1);
+        dfs(root.right, depth+1);
 
+    }
+}
 }
