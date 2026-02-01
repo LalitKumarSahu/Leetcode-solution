@@ -1,4 +1,5 @@
 //tc:NlogN sorting + O(N) travesal, sc:O(N)
+import java.util.*;
 class Solution {
     public int findMinArrowShots(int[][] points) {
         int n  = points.length;
@@ -13,6 +14,8 @@ class Solution {
                return 1;
             }
         });
+
+      
         int arrows = 1;
         int commonInterval[] = points[0];
         for(int i = 1; i < n; i++){

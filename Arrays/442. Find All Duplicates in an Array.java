@@ -1,6 +1,6 @@
 //Time: O(n)-using map
 //Space: O(n) (extra space for map)
-
+import java.util.*;
 class Solution {
     public List<Integer> findDuplicates(int[] nums) {
         Map<Integer, Integer> freq = new HashMap<>();
@@ -22,7 +22,7 @@ class Solution {
 }
 
 //tc:O(N), sc:O(1) using pop
-class Solution {
+class Solution2 {
     public List<Integer> findDuplicates(int[] nums) {
        
         List<Integer> result = new ArrayList<>();
