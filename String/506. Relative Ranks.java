@@ -1,5 +1,12 @@
+//m-1 
+//arr ko map me store kar lenge (value, idx)
+//sort arr , and iterate sorted arr and find the orgIdx from map
+// and assign the rank
+
+
+// m-2 by using counting sort
 class Solution {
-    //tc:O(N) + O(N) + O(M),sc:O(M)
+    //tc:O(N) + O(N) + O(M),sc:O(M), by using counting sort
     public int findmax(int[] score){
         int max = Integer.MIN_VALUE;
         for(int element : score){
@@ -33,7 +40,7 @@ class Solution {
                 } else if (rank == 3) {
                     res[originalIdx] = "Bronze Medal";
                 } else {
-                    res[originalIdx] = Integer.toString(rank);
+                    res[originalIdx] = Integer.toString(rank); // rank ko string me convert 
                 }
                 rank++;
                 if (rank > n) break;

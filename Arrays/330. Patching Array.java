@@ -3,7 +3,7 @@ class Solution {
     public int minPatches(int[] nums, int n) {
         
         long sumFormed = 0;
-        long expectedSum = 0;
+        long expectedSum = 1;
         int minPatches = 0;
         int i= 0;
         int m = nums.length;
@@ -23,3 +23,6 @@ class Solution {
         return minPatches;
     }
 }
+
+
+    
