@@ -13,6 +13,8 @@ class Solution {
         // Check other remainders
         for (int rem = 1; rem < k; rem++) {  // k/2
             int comp = k - rem;
+
+            // if the count of both is not equal
             if (map[rem] != map[comp]) return false;
         }
 
