@@ -4,7 +4,7 @@
 
 import java.util.*;
 class MyCalendar {
-    //(Key, val)
+    //(Key, val)->key = start time, val = end Time
     TreeMap<Integer, Integer>map;
     public MyCalendar() {
         map = new TreeMap<>(); 
@@ -12,7 +12,7 @@ class MyCalendar {
     
     public boolean book(int startTime, int endTime) {
         Integer lastEnd = map.lowerKey(endTime);
-        // overlap exist
+        // overlap exist, to not store inot map
         if(lastEnd != null && startTime <= map.get(lastEnd)-1){
             return false;
         } 
