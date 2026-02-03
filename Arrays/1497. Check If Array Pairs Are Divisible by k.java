@@ -11,7 +11,7 @@ class Solution {
         if (map[0] % 2 != 0) return false;
 
         // Check other remainders
-        for (int rem = 1; rem < k; rem++) {  // k/2
+        for (int rem = 1; rem < k/2; rem++) {  // k/2
             int comp = k - rem;
 
             // if the count of both is not equal

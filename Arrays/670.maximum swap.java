@@ -1,3 +1,11 @@
+// -----Brute force m-1----
+// find the max elm from the right side
+// and then first elm se jo greater hoga use swap karke return kar denge
+// ------m-2---------
+// right se max dekenge uska idx store kar lenge
+// fir start form 0th idx uska right me max pata hi hai usi se swap kar denge
+// [3,4,7,1,5,3] = [7,7,7,5,5,3] inka idx->[2,2,2,4,4,5] ->3 ka max idx 2 = swap (3,7)
+
 class Solution {
     public int maximumSwap(int num) {
         char numArr[] = Integer.toString(num).toCharArray();
