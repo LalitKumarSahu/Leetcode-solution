@@ -1,4 +1,6 @@
 class Solution {
+    // aagr nums[i] non zero hai to nz++ and i++ dono hoga
+    // agar nums[i] = 0 hai to keval i++ hoga nz ko rok ke rakhenge
     public int[] applyOperations(int[] nums) {
         int nz = 0;
         int n = nums.length;
