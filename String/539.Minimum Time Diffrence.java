@@ -1,3 +1,4 @@
+import java.util.*;
 class Solution {
     //m-1 covert into min, sort, then find adjacent diff
     public int findMinDifference(List<String> timePoints) {
@@ -28,15 +29,17 @@ class Solution {
 }
 
 // m-2 optimize tc by using bucket sort
-class Solution {
+class Solution2 {
 
-    public int findMinDifference(List<String> timePoints) {
+    public int findMinDifference2(List<String> timePoints) {
         // convert input to minutes
         boolean[] mins = new boolean[1440];
         for (String time : timePoints){
             int h = Integer.parseInt(time.substring(0, 2));
             int m = Integer.parseInt(time.substring(3));
              int minutes = h * 60 + m;
+
+              // Aagar already true to dono same ho jayega to unka diff 0 hoga
             if(mins[minutes] == true) return 0;
             mins[minutes] = true;
         }
