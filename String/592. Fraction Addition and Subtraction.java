@@ -41,7 +41,7 @@
             num = num * currDen + den * currNum;
             den = den * currDen;
 
-            // reduce fraction
+            // reduce fraction jo bhi gcd number aayega usi se dono ko devide kar denge
             int gcdStep = gcd(Math.abs(num), den);
             num /= gcdStep;
             den /= gcdStep;
