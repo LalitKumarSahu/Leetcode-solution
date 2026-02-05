@@ -5,8 +5,8 @@ class Solution {
             firstHalf/=10;
         }
         while(firstHalf>0){
-            res = res *10 + (firstHalf%10);
-            firstHalf/=10;
+            res = res *10 + (firstHalf%10); // last digit aati hai ->firstHalf%10
+            firstHalf/=10; // remove
         }
         return res;
     }
