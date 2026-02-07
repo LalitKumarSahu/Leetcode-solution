@@ -18,7 +18,7 @@ class Solution {
                 return sec.compareTo(first); // K // if  b>a then sorting
             }
         });
-        //multiple 0 then return only one 0
+        //multiple 0 then return only one 0 eg = "00"->'0'
         if(elements[0].equals("0")){
             return "0";
         }
