@@ -22,12 +22,13 @@ class Solution {
     }
 }
 // m-2 using 2 pointer read and write
-class Solution {
+class Solution2 {
     public int minLength(String s) {
         int n = s.length();
         char str[] = s.toCharArray(); // N
         int w = 0;
         for(int r = 0; r < n; r++){ // N
+            // blindly insert hoga
             if(w == 0){
                 str[w] = str[r];
                 w++;
