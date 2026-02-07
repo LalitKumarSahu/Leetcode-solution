@@ -1,4 +1,9 @@
 class Solution {
+    // agar curr black ball hai to continue 
+// agr cuur white ball hai to find the count and inc the last
+// last ye track krega ki iske piche sab white ball hai
+// curr == black to curr++
+// jab curr = white to count = curr - last and last += 1
     public long minimumSteps(String s) {
         int n = s.length();
         int last = 0;        // ye track karega ki next 0 ko kis index par hona chahiye
@@ -15,7 +20,7 @@ class Solution {
     }
 }
 
-class Solution {
+class Solution2 {
     public long minimumSteps(String s){
     char arr[] = s.toCharArray();
     int left = 0;
