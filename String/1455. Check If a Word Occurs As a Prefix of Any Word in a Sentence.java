@@ -16,4 +16,43 @@ public class 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence 
         return -1;
     }
 }
+class Solution2 {
+    public int isPrefixOfWord2(String sentence, String searchWord) {
+        int n = sentence.length();
+        int m = searchWord.length();
+        int i = 0;
+        int idx = 1;
+
+        while (i < n) {
+
+            // skip spaces
+            while (i < n && sentence.charAt(i) == ' ') {
+                i++;
+            }
+
+            int j = 0;
+            int start = i;
+
+            // match prefix
+            while (i < n && j < m && sentence.charAt(i) == searchWord.charAt(j)) {
+                i++;
+                j++;
+            }
+
+            if (j == m) {
+                return idx;
+            }
+
+            // move i to end of current word
+            while (i < n && sentence.charAt(i) != ' ') {
+                i++;
+            }
+
+            idx++; // ✅ next word
+        }
+
+        return -1;
+    }
+}
+
 }
