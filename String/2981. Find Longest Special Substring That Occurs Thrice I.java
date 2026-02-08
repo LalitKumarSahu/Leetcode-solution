@@ -1,3 +1,7 @@
+import java.util.*;
+// atleast three time repeat hona chayhe  eg = aaaa
+// a = 4, aa = 3, aaa = 2, aaaa= 1 , three time repeat only a , aa = longest length = aa = 2
+// agar koi new char aata hai to start a new string
 class Solution {
     public int maximumLength(String s) {
         
