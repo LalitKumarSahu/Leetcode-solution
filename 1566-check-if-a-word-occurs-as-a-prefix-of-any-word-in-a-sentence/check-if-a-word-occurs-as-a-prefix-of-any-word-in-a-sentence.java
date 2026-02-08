@@ -1,8 +1,8 @@
 // class Solution {
 //     public int isPrefixOfWord(String sentence, String searchWord) {
 
-//         String words[] = sentence.split(" ");
-//         int n = words.length;  // ✅ yaha fix
+//         String words[] = sentence.split(" "); // i, love,  eating, burger
+//         int n = words.length; 
 //         int m = searchWord.length();
 
 //         for(int i = 0; i < n; i++){
@@ -22,38 +22,37 @@ class Solution {
         int n = sentence.length();
         int m = searchWord.length();
         int i = 0;
-        int j = 0;
         int idx = 1;
 
         while (i < n) {
 
-            // skip leading spaces
+            // skip spaces
             while (i < n && sentence.charAt(i) == ' ') {
                 i++;
             }
 
-            // compare word with searchWord
-            j = 0;
+            int j = 0;
             int start = i;
+
+            // match prefix
             while (i < n && j < m && sentence.charAt(i) == searchWord.charAt(j)) {
                 i++;
                 j++;
             }
 
-            // if full searchWord matched
             if (j == m) {
                 return idx;
             }
 
-            // move to end of current word
+            // move i to end of current word
             while (i < n && sentence.charAt(i) != ' ') {
                 i++;
             }
 
-            // move to next word
-            idx++;
+            idx++; // ✅ next word
         }
 
         return -1;
     }
 }
+
