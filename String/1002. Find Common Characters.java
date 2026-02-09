@@ -33,7 +33,7 @@ class Solution {
                 int count = csf[j];
 
                 while(count > 0){
-                    res.add(String.valueOf(ch));
+                    res.add(String.valueOf(ch));  //// convert char to string 'a' = "a"
                     count--;
                 }
             }
