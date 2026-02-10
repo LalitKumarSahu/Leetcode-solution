@@ -8,10 +8,13 @@ class Solution {
         for(int i = 0; i<n; i++){
             map1[s1.charAt(i) - 'a']++;
         }
+        // i = window ka starting index
         for(int i = 0; i<=m-n; i++){
             int map2[] = new int[26];
+
+            // size of the s1 j → window ke andar ka offset (0 se n-1 tak)
             for(int j = 0; j<n; j++){
-                map2[s2.charAt(i+j) - 'a']++;
+                map2[s2.charAt(i+j) - 'a']++; // 0 - "e", 1-"i" =>"ei"
             }
             if(isMatched(map1, map2)){
                 return true;
