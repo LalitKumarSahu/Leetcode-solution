@@ -48,9 +48,10 @@ class Solution {
          if(isMatched(map1, map2)){
             return true;
       }
+      // ei tha e ko delte aur d ko add = id
         for(int i = 1; i<=m-n; i++){
-            map2[s2.charAt(i-1) - 'a']--; // del
-            map2[s2.charAt(i+n -1) - 'a']++; //add
+            map2[s2.charAt(i-1) - 'a']--; // del - shrinking
+            map2[s2.charAt(i+n -1) - 'a']++; //add 
 
             if(isMatched(map1, map2)){
             return true;
