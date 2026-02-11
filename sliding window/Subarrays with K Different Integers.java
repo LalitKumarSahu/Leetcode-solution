@@ -1,4 +1,4 @@
-package sliding window;
+import java.util.*;
 
 public class Subarrays with K Different Integers {
   class Solution {
