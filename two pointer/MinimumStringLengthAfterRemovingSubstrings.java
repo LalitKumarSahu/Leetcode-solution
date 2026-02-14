@@ -24,4 +24,30 @@ public class MinimumStringLengthAfterRemovingSubstrings {
         return stack.size();
     }
 }
+// m-2 using 2 pointer read and write
+//agar read ki value B or D hai to check kar lenge pichla A or C hai to w--
+//agar read pointer B or D nhi hai to w++ hoga r++
+class Solution {
+    public int minLength(String s) {
+        int n = s.length();
+        char str[] = s.toCharArray(); // N
+        int w = 0;
+        for(int r = 0; r < n; r++){ // N
+            if(w == 0){
+                str[w] = str[r];
+                w++;
+                continue;
+            }
+            if(str[r] == 'B' && str[w-1] == 'A'){
+                w--;
+            } else if(str[r] == 'D' && str[w-1] == 'C'){
+                w--;
+            }else{
+                str[w] = str[r];
+                w++;
+            }
+        }
+        return w; // w is the size of resulting string
+    }
+}
 }
