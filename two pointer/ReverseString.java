@@ -26,6 +26,20 @@ class Solution {
     }
 }
 
+//m-3 using 2 pointer
+class Solution {
+    public void reverseString(char[] s) {
+        int n = s.length;
+        int left = 0, right = n-1;
+        while(left < right){
+            char ch = s[left];
+            s[left] = s[right];
+            s[right] = ch;
+            left++; right--;
+
+        }
+    }
+}
 
 
 
