@@ -1,6 +1,6 @@
 public class SortColors {
   class Solution {
-    // create a array and start se 0 dalenge aur end se 2, 1 hoga to skip 
+    // start se 0 dalenge aur end se 2, 1 hoga to skip 
     // start se end 1 dal denge
     public void sortColors(int[] nums) {
         int start = 0;
