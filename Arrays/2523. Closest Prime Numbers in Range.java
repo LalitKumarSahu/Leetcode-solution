@@ -1,3 +1,4 @@
+import java.util.Arrays;
 class Solution {
     public int[] closestPrimes(int left, int right) {
         boolean[] isPrime = sieve(right);
@@ -32,7 +33,7 @@ class Solution {
         isPrime[0] = false;
         isPrime[1] = false;
         
-        for (int i = 2; i * i <= n; i++) {
+        for (int i = 2; i * i <= n; i++) { // 2 * 2 , 7 * 7 
             if (isPrime[i]) {
                 for (int j = i * i; j <= n; j += i) { //2*2 = 4, 6, 8
                     isPrime[j] = false;
