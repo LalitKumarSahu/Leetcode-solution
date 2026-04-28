@@ -23,9 +23,8 @@ class Solution {
         int sum = 0;
 
         for(int i =0; i<n; i++){
-            sum = (sum + arr[i])%26; // sum = 30, 30%26 = 4
-
-            if(sum < 0) sum += 26; // -3, = -3+26= 23
+            sum = (sum + arr[i])%26;  // sum = 30 , a => 30%26 = 4, a + 4 = e
+            if(sum < 0) sum += 26; // b and sum = -3, add 26 sum = 23 b + 23 = y
 
             char shiftedChar = (char)('a' + ((s.charAt(i)-'a' + sum)%26));
             res.setCharAt(i, shiftedChar);
