@@ -10,7 +10,7 @@ class Solution {
                 nums[i+1] = 0;
             }
             if(nums[i] != 0){
-                if(nz != i){
+                if(nz != i){ //not same index
                     int temp = nums[i];
                     nums[i] = nums[nz];
                     nums[nz] = temp;
