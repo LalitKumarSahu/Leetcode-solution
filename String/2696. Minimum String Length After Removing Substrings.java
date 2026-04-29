@@ -22,6 +22,11 @@ class Solution {
     }
 }
 // m-2 using 2 pointer read and write
+// m-2 using 2 pointer read and write
+//oth idx me write blindly
+// agr read ki value b and d nhi hai to write blindly read++ and write++
+// agar read ki value b hai w-1 is a to w--
+// agar read ki value d hai w-1 is c to w--
 class Solution2 {
     public int minLength(String s) {
         int n = s.length();
