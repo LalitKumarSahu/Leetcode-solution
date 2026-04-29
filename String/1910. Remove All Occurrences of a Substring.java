@@ -1,22 +1,21 @@
 class Solution {
-    //tc-O(n * M) - n for Traversal  and m for comparing
     public String removeOccurrences(String s, String part) {
-       StringBuilder sb = new StringBuilder();
-
-       int n = s.length();
-       int m = part.length();
-
-       for(int i = 0; i<n; i++){
-         sb.append(s.charAt(i));
-
-         if(sb.length() >= m){
-            String sub = sb.substring(sb.length()-m); //daabc 5-3 = 2
-
-            if(sub.equals(part)){
-                sb.setLength(sb.length()-m); // 2nd idx she remove hoga
-            }
-         }
-       }
-       return sb.toString();
+        StringBuilder sb = new StringBuilder();
+        int n = s.length();
+        int m = part.length();
+        for(int i = 0; i<n; i++){
+          char ch = s.charAt(i);
+          sb.append(ch);
+          if(sb.length() >= m){
+             String sub = sb.substring(sb.length() - m);
+             if(sub.equals(part)){
+                // Original: "abcdef"
+                 //setLength(3) → sirf first 3 characters rakhe → "abc"
+                 //Baaki characters delete ho gaye    
+                sb.setLength(sb.length() - m);
+             }
+          }
+        }
+        return sb.toString();
     }
 }
