@@ -36,3 +36,33 @@ class Solution {
     }
 }
 }
+
+
+class Solution2 {
+    public int maxFrequencyElements2(int[] nums) {
+        int[] freq = new int[101]; // assuming nums[i] <= 100
+
+        // Step 1: Count frequency
+        for (int num : nums) {
+            freq[num]++;
+        }
+
+        // Step 2: Sort frequency array
+        Arrays.sort(freq);
+
+        // Step 3: Get max frequency (last element)
+        int maxFreq = freq[100];
+
+        // Step 4: Count elements with max frequency
+        int result = 0;
+        for (int i = 100; i >= 0; i--) {
+            if (freq[i] == maxFreq) {
+                result += freq[i];
+            } else {
+                break;
+            }
+        }
+
+        return result;
+    }
+}
