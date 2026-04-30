@@ -66,3 +66,26 @@ class Solution2 {
         return result;
     }
 }
+
+// m-3
+// m-3
+class Solution3 {
+    public int maxFrequencyElements3(int[] nums) {
+        int[] freq = new int[101]; // assuming nums[i] <= 100
+        int maxFreq = 0;
+        int sumFreq = 0;
+        for(int elm: nums){
+            freq[elm]++;
+            int currFreq = freq[elm];
+            if(currFreq>maxFreq){
+                maxFreq = currFreq;
+                sumFreq = currFreq;
+            }else if(currFreq == maxFreq){
+                sumFreq += currFreq;
+
+            }
+        }
+        return sumFreq;
+       
+    }
+}
