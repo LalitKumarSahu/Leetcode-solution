@@ -3,6 +3,9 @@
 
 
 // m-2 optimize instead of storing all value in array store only 2 value 
+//(digitsum, num)
+// 1 - [1,2,3] but max 2 only =[2,3]
+import java.util.HashMap;
 class Solution {
     public int maximumSum(int[] nums) {
        HashMap<Integer,Integer>map = new HashMap<>();
