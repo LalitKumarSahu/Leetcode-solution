@@ -1,3 +1,4 @@
+import java.util.HashMap;
 class Solution {
     public int[] queryResults(int limit, int[][] queries) {
         HashMap<Integer,Integer>ballMap = new HashMap<>();
