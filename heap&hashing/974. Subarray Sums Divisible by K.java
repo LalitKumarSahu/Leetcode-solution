@@ -1,3 +1,4 @@
+import java.util.HashMap;
 public class 974. Subarray Sums Divisible by K {
   class Solution {
     public int subarraysDivByK(int[] nums, int k) {
