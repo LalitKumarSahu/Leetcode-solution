@@ -1,3 +1,4 @@
+import java.util.HashMap;
 public class 3223. Minimum Length of String After Operations {
   class Solution {
     public int minimumLength(String s) {
