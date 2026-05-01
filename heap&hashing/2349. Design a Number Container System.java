@@ -1,3 +1,4 @@
+import java.util.*;
 public class 2349. Design a Number Container System {
   class NumberContainers {
     HashMap<Integer,Integer>idxToNumber;
@@ -15,7 +16,7 @@ public class 2349. Design a Number Container System {
             int prev = idxToNumber.get(index);
             numberToIdx.get(prev).remove(index);
             if(numberToIdx.get(prev).size() == 0){
-                numberToIdx.remove();
+                numberToIdx.remove(prev);
             }
         }
         // insert new
