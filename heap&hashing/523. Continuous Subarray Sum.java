@@ -1,6 +1,6 @@
 //-----------x------------>
 //-----z------>--p--------->
-// p % k == 0 hai to z % k == x hoga
+// p % k == 0 hai to z % k == x%k hoga
 
 public class 523. Continuous Subarray Sum {
   class Solution {
