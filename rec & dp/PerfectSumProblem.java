@@ -110,4 +110,47 @@ class Solution {
         return dp[n-1][target];
     }
 }
+
+// space optimization
+class Solution {
+    public int perfectSum(int[] nums, int target) {
+        int n = nums.length;
+        
+        int prev[] = new int[target+1];
+        
+        // base case for index 0
+        for(int t = 0; t <= target; t++){
+            if(t == 0 && nums[0] == 0){
+                prev[t] = 2;
+            } 
+            else if(t == 0){
+                prev[t] = 1;
+            } 
+            else if(t == nums[0]){
+                prev[t] = 1;
+            } 
+            else{
+                prev[t] = 0;
+            }
+        }
+
+        for(int i = 1; i < n; i++){
+            int curr[] = new int[target+1];
+            
+            for(int t = 0; t <= target; t++){
+                int pick = 0;
+                if(nums[i] <= t){
+                    pick = prev[t - nums[i]];
+                }
+
+                int noPick = prev[t];
+
+                curr[t] = pick + noPick;
+            }
+            prev = curr;
+        }
+
+        return prev[target];
+    }
+}
 }
