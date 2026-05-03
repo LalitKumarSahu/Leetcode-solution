@@ -102,4 +102,42 @@ class Solution3 {
     }
 
 }
+// m-3 space optimization
+
+class Solution4 {
+    static int knapsack(int W, int val[], int wt[]) {
+        // code here
+        int n = val.length;
+        int prev[] = new int[W+1];
+        prev[0] = 0;
+        // base case W = 0
+        // for(int i = 0; i<n; i++){
+        //     dp[i][0] = 0;
+        // }
+        // idx =0
+        for(int c = 0; c < W+1; c++){
+            if(wt[0] <= c){
+                prev[c] = val[0];
+            }else{
+                prev[c] = 0;
+            }
+        }
+        for(int i=1; i<n; i++){
+            int curr[] = new int[W+1];
+            curr[0] = 0;
+            for(int j=0; j<=W; j++){
+                 int pick = 0;
+                    if(wt[i] <= j){
+                        pick = val[i] + prev[j-wt[i]];//rec(j - wt[i], val, wt, i-1, dp);
+                    }
+                    int noPick = 0 + prev[j];//rec(j, val, wt, i-1, dp);
+                    
+                   curr[j] =  Math.max(pick, noPick);
+            }
+            prev = curr;
+        }
+        return prev[W];
+    }
+
+}
 }
