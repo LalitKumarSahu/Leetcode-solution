@@ -25,7 +25,7 @@ class Solution2 {
     public int rob(int[] nums) {
         int n = nums.length;
         if (n == 0) return 0;
-        int[] dp = new int[n+1];  // shifting logic bcz array can not hold negative idx
+        int[] dp = new int[n];  // shifting logic bcz array can not hold negative idx
         Arrays.fill(dp, -1);
         return robUtil(nums, n, dp);
     } 
@@ -53,7 +53,7 @@ class Solution3 {
     public int rob(int[] nums) {
         int n = nums.length;
         if (n == 0) return 0;
-        int[] dp = new int[n + 1]; // Use n+1 to align with robUtil's index
+        int[] dp = new int[n]; // Use n+1 to align with robUtil's index
          dp[0] = 0;
          dp[1] = nums[0];
          
@@ -71,9 +71,7 @@ class Solution4 {
     public int rob(int[] nums) {
         int n = nums.length;
         if (n == 0) return 0;
-        int[] dp = new int[n + 1]; // Use n+1 to align with robUtil's index
-         dp[0] = 0;
-         dp[1] = nums[0];
+      
          int prev2 = 0;
          int prev1 = nums[0];
          int ans = 0;
