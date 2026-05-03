@@ -73,4 +73,41 @@ class Solution2 {
         return dp[idx][target];
     }
 }
+class Solution {
+    public int perfectSum(int[] nums, int target) {
+        int n = nums.length;
+        int dp[][] = new int[n][target + 1];
+
+        // base case for index 0
+        for(int t = 0; t <= target; t++){
+            if(t == 0 && nums[0] == 0){
+                dp[0][t] = 2;
+            } 
+            else if(t == 0){
+                dp[0][t] = 1;
+            } 
+            else if(t == nums[0]){
+                dp[0][t] = 1;
+            } 
+            else{
+                dp[0][t] = 0;
+            }
+        }
+
+        for(int i = 1; i < n; i++){
+            for(int t = 0; t <= target; t++){
+                int pick = 0;
+                if(nums[i] <= t){
+                    pick = dp[i-1][t - nums[i]];
+                }
+
+                int noPick = dp[i-1][t];
+
+                dp[i][t] = pick + noPick;
+            }
+        }
+
+        return dp[n-1][target];
+    }
+}
 }
