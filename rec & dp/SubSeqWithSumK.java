@@ -103,5 +103,47 @@ class Solution3 {
         return (dp[n-1][k] == 1);
     }
 }
+// using space optimization
+
+class Solution4 {
+    public boolean checkSubsequenceSum(int[] arr, int k) {
+        // code here
+        int n = arr.length;
+        int prev[] = new int[k+1];          
+        // base case : k == 0 hai to koi bhi idx hot true hoga
+        // for(int i = 0; i<n; i++){
+        //     dp[i][0] = 1;
+        // }
+          prev[0] = 1;
+        // idx == 0 hai to target equal to arr[0] to true otherwise false
+        for(int t = 1; t <= k; t++){
+            if(t == arr[0]){
+                prev[t] = 1;
+            }else{
+                prev[t] = 2;
+            }
+        }
+        // dp[i-1] = prev, dp[i] = curr
+        for(int i = 1; i<n; i++){
+            int curr[] = new int[k+1];
+            curr[0] = 1;
+            for(int j = 1; j<=k; j++){
+                
+            int pick = 2;
+            if(arr[i] <= j){
+                pick = prev[j - arr[i]];//rec(arr, j - arr[i], i-1, dp);
+                if(pick == 1){
+                     curr[j] = 1;
+                    continue;
+                }
+            }
+            int noPick = prev[j];//rec(arr, j, i-1, dp);
+             curr[j] = noPick;
+            }
+            prev = curr;
+        }
+        return (prev[k] == 1);
+    }
+}
  
 }
