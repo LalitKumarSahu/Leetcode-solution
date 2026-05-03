@@ -1,4 +1,4 @@
-// import java.util.Arrays;
+import java.util.Arrays;
 public class MinCostClimbingStair {
   //f(n) =min( c[n-1] + f(n-1)  ,  (c[n-2] + f(n-2) ) // n-1 she jump karne tak ka cost + n-1 tak aane ka cost
 
