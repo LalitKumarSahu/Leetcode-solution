@@ -66,4 +66,27 @@ class Solution3 {
     }
 
 }
+// space optimization
+class Solution4 {
+    public int rob(int[] nums) {
+        int n = nums.length;
+        if (n == 0) return 0;
+        int[] dp = new int[n + 1]; // Use n+1 to align with robUtil's index
+         dp[0] = 0;
+         dp[1] = nums[0];
+         int prev2 = 0;
+         int prev1 = nums[0];
+         int ans = 0;
+         
+         for(int i = 2; i < n+1; i++ ){
+            int pick = nums[i - 1] + prev2;
+            int noPick = 0 + prev1;
+            ans = Math.max(pick, noPick);
+            prev2 = prev1;
+            prev1 = ans;
+         }
+         return ans;
+    }
+
+}
 }
