@@ -68,4 +68,38 @@ class Solution2 {
        return dp[idx][W];
     }
 }
+// m-3 bottom up
+
+class Solution3 {
+    static int knapsack(int W, int val[], int wt[]) {
+        // code here
+        int n = val.length;
+        int dp[][] = new int[n][W+1];
+        // base case W = 0
+        for(int i = 0; i<n; i++){
+            dp[i][0] = 0;
+        }
+        // idx =0
+        for(int c = 0; c < W+1; c++){
+            if(wt[0] <= c){
+                dp[0][c] = val[0];
+            }else{
+                dp[0][c] = 0;
+            }
+        }
+        for(int i=1; i<n; i++){
+            for(int j=0; j<=W; j++){
+                 int pick = 0;
+                    if(wt[i] <= j){
+                        pick = val[i] + dp[i-1][j-wt[i]];//rec(j - wt[i], val, wt, i-1, dp);
+                    }
+                    int noPick = 0 + dp[i-1][j];//rec(j, val, wt, i-1, dp);
+                    
+                   dp[i][j] =  Math.max(pick, noPick);
+            }
+        }
+        return dp[n-1][W];
+    }
+
+}
 }
