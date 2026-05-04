@@ -25,4 +25,37 @@ class Solution {
         
     }
 }
+class Solution2 {
+    public int cutRod(int[] price) {
+        int N = price.length; // N is the length of rod
+        int dp[][] = new int[N][N+1];
+        for(int i = 0; i<N; i++){
+            for(int j = 0; j<N+1; j++){
+                dp[i][j] = -1;
+            }
+        }
+        return rec(N, N-1, price, dp);
+    }
+    public int rec(int N, int idx, int price[], int dp[][]){
+        // base case : length of rod is one
+        if(idx == 0){
+            dp[idx][N] = N * price[idx];
+            return N * price[idx];
+        }
+        if(dp[idx][N] != -1){
+            return dp[idx][N];
+        }
+        int pick = 0;
+        int currLen = idx+1;
+        if(N >= currLen){
+            pick = price[idx] + rec(N-currLen, idx, price,dp);
+        }
+        int noPick = 0 + rec(N, idx-1, price,dp);
+        
+        dp[idx][N] =  Math.max(pick, noPick);
+        return dp[idx][N];
+        
+    }
+}
+
 }
