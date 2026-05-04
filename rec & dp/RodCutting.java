@@ -57,5 +57,30 @@ class Solution2 {
         
     }
 }
-
+// m-3 bottom up approach
+class Solution3 {
+    public int cutRod(int[] price) {
+        int N = price.length; // N is the length of rod
+        int dp[][] = new int[N][N+1];
+        
+        for(int r = 0; r < N+1; r++){
+            dp[0][r] = r * price[0];
+        }
+        for(int i = 1; i<N; i++){
+            for(int j = 0; j<N+1; j++){
+                 int pick = 0;
+                int currLen = i+1;
+                if(j >= currLen){
+                    pick = price[i] + dp[i][j - currLen];//rec(j-currLen, i, price,dp);
+                }
+                int noPick = 0 + dp[i-1][j];//rec(j, i-1, price,dp);
+                
+                dp[i][j] =  Math.max(pick, noPick);
+            }
+        }
+        return dp[N-1][N];
+        
+    }
+   
+}
 }
