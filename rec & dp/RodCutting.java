@@ -83,4 +83,32 @@ class Solution3 {
     }
    
 }
+// m-4 space optimization
+class Solution4 {
+    public int cutRod(int[] price) {
+        int N = price.length; // N is the length of rod
+        int prev[] = new int[N+1];
+        
+        for(int r = 0; r < N+1; r++){
+            prev[r] = r * price[0];
+        }
+        for(int i = 1; i<N; i++){
+            int curr[] = new int[N+1];
+            for(int j = 0; j<N+1; j++){
+                 int pick = 0;
+                int currLen = i+1;
+                if(j >= currLen){
+                    pick = price[i] + curr[j - currLen];//rec(j-currLen, i, price,dp);
+                }
+                int noPick = 0 + prev[j];//rec(j, i-1, price,dp);
+                
+                curr[j] =  Math.max(pick, noPick);
+            }
+            prev = curr;
+        }
+        return prev[N];
+        
+    }
+   
+}
 }
