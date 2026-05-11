@@ -1,3 +1,4 @@
 {
-  "java.dependency.syncWithFolderExplorer": false
+  "java.dependency.syncWithFolderExplorer": false,
+  "editor.inlineSuggest.edits.allowCodeShifting": "never"
 }
