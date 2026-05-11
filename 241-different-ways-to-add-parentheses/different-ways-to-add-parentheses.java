@@ -1,47 +1,101 @@
+// class Solution {
+//     public List<Integer> diffWaysToCompute(String expression) {
+//         int n = expression.length();
+
+//         return rec(expression, 0, n-1);
+//     }
+//     public List<Integer> rec(String exp, int start, int end){
+//         List<Integer>res = new ArrayList<>();
+//         // base case : single digit
+//         if(start == end){
+//             int num = exp.charAt(start)-'0';
+//             res.add(num);
+//             return res;
+//         }
+//         // base case : double digit
+//         if(end-start == 1 && Character.isDigit(exp.charAt(start))){
+//             int num = Integer.parseInt(exp.substring(start, end + 1));
+//             res.add(num);
+//             return res;
+            
+//         }
+//         // split
+//         for(int i = start; i<=end; i++){
+//             if(Character.isDigit(exp.charAt(i))){
+//                 continue;
+//             }
+//             char op = exp.charAt(i);
+//             List<Integer>left = rec(exp, start, i-1);
+//             List<Integer>right = rec(exp, i+1, end);
+
+//             for(int l : left){
+//                 for(int r : right){
+//                     if(op == '*'){
+//                         res.add(l * r);
+//                     }else if(op == '+'){
+//                         res.add(l + r);
+//                     }else{
+//                         res.add(l - r);
+//                     }
+//                 }
+//             }
+
+
+//         }
+//         return res;
+//     }
+// }
+
 class Solution {
     public List<Integer> diffWaysToCompute(String expression) {
         int n = expression.length();
-
-        return rec(expression, 0, n-1);
+        List<Integer>[][] dp = new ArrayList[n][n];
+        return recur(expression,0,n-1,dp);
     }
-    public List<Integer> rec(String exp, int start, int end){
-        List<Integer>res = new ArrayList<>();
-        // base case : single digit
-        if(start == end){
+    //tc: o(N*2^N)
+    //sc: o(N^2*2^N)
+    public List<Integer> recur(String exp, int start, int end,List<Integer>[][] dp){
+        List<Integer> res = new ArrayList<>();
+        if(dp[start][end]!=null){
+            return dp[start][end];
+        }
+        //base case : single digit
+        if(start==end){
             int num = exp.charAt(start)-'0';
             res.add(num);
             return res;
         }
-        // base case : double digit
-        if(end-start == 1 && Character.isDigit(exp.charAt(start))){
-            int num = Integer.parseInt(exp.substring(start, end + 1));
-            res.add(num);
+        //base case : double digit
+        if(end-start==1 && Character.isDigit(exp.charAt(start))){
+            int num1 = exp.charAt(start)-'0'; 
+            int num2 = exp.charAt(end)-'0';
+            // int num = Integer.parseInt(exp.substring(start,end+1));
+            res.add(num1*10 + num2);
             return res;
-            
         }
-        // split
-        for(int i = start; i<=end; i++){
+        //split
+        // N
+        for(int i=start;i<=end;i++){
             if(Character.isDigit(exp.charAt(i))){
                 continue;
             }
             char op = exp.charAt(i);
-            List<Integer>left = rec(exp, start, i-1);
-            List<Integer>right = rec(exp, i+1, end);
-
+            // 2^N
+            List<Integer> left = recur(exp,start,i-1,dp);
+            List<Integer> right = recur(exp,i+1,end,dp);
             for(int l : left){
                 for(int r : right){
                     if(op == '*'){
-                        res.add(l * r);
+                        res.add(l*r);
                     }else if(op == '+'){
-                        res.add(l + r);
+                        res.add(l+r);
                     }else{
-                        res.add(l - r);
+                        res.add(l-r);
                     }
                 }
             }
-
-
         }
+        dp[start][end] = res;
         return res;
     }
 }
