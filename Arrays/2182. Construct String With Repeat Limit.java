@@ -1,36 +1,51 @@
 class Solution {
     public String repeatLimitedString(String s, int repeatLimit) {
-        int freq[] = new int[26];
-        for (char ch : s.toCharArray()) {  // N
+
+        int[] freq = new int[26];
+
+        for(char ch : s.toCharArray()) {
             freq[ch - 'a']++;
         }
 
         StringBuilder sb = new StringBuilder();
-        int idx = 25; // largest char index
 
-        while (idx >= 0) { //N
-            if (freq[idx] == 0) {
+        int idx = 25;
+
+        while(idx >= 0) {
+
+            // current largest character nahi hai
+            if(freq[idx] == 0) {
                 idx--;
                 continue;
             }
 
+            // kitne use kar sakte hain
             int use = Math.min(freq[idx], repeatLimit);
-            for (int k = 0; k < use; k++) {
-                sb.append((char) ('a' + idx));
+
+            for(int i = 0; i < use; i++) {
+                sb.append((char)('a' + idx));
             }
+
             freq[idx] -= use;
 
-            if (freq[idx] > 0) {
-                // find next smaller char
-                int prevIdx = idx - 1;
-                while (prevIdx >= 0 && freq[prevIdx] == 0) { // N
-                    prevIdx--;
+            // agar aur same char bacha hai
+            if(freq[idx] > 0) {
+
+                int next = idx - 1;
+
+                // next smaller character find karo
+                while(next >= 0 && freq[next] == 0) {
+                    next--;
                 }
-                if (prevIdx < 0) {
-                    break; // no smaller char, stop
+
+                // koi smaller character hi nahi mila
+                if(next < 0) {
+                    break;
                 }
-                sb.append((char) ('a' + prevIdx));
-                freq[prevIdx]--;
+
+                // ek smaller char add karo
+                sb.append((char)('a' + next));
+                freq[next]--;
             }
         }
 
