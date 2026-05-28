@@ -35,4 +35,41 @@ public class continuousSubarray {
         
     }
 }
+// m-2 linear time without tree map
+class Solution {
+    
+    public long continuousSubarrays(int[] nums) {
+        
+         
+         int start = 0;
+         int end = 0;
+          int n = nums.length;
+         long count = 0;
+         int currMax = Integer.MIN_VALUE;
+         int currMin = Integer.MAX_VALUE;
+
+         while(end < n){
+             currMax = Math.max(currMax, nums[end]);
+             currMin = Math.min(currMin, nums[end]);
+
+             if(currMax - currMin > 2){
+                start = end;
+                currMax = nums[end];
+                currMin = nums[end];
+
+                while(start >= 0 && Math.abs(nums[start-1] - nums[end]) <= 2){
+                    start--;
+                    currMax = Math.max(currMax, nums[start]);
+                    currMin = Math.min(currMin, nums[start]);
+                }
+             }
+           
+          
+            count += (end-start + 1);
+            end++;
+         }
+        return count;
+        
+    }
+}
 }
