@@ -14,10 +14,13 @@ public class continuousSubarray {
          long count = 0;
 
          while(end < n){
+          // expansion
             map.put(nums[end], map.getOrDefault(nums[end], 0) + 1);
-            // min = map.lastEntry().getKey();
-            // max = map.firstEntry().getKey();
+            // max = map.lastEntry().getKey();
+            // min = map.firstEntry().getKey();
             // int diff = max - min;
+
+            // shrinking phase
             while(map.lastEntry().getKey() - map.firstEntry().getKey() > 2 ){
             map.put(nums[start], map.getOrDefault(nums[start], 0) - 1);
             if(map.get(nums[start]) == 0){
