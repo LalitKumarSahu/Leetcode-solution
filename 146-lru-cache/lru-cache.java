@@ -1,10 +1,8 @@
-import java.util.HashMap;
-
 class Node {
     int key;
     int value;
-    Node prev;
     Node next;
+    Node prev;
 
     Node(int key, int value) {
         this.key = key;
@@ -13,75 +11,82 @@ class Node {
 }
 
 class LRUCache {
-
-    int capacity;
-    HashMap<Integer, Node> map;
-    Node head;
-    Node tail;
-
-    // Constructor
-    LRUCache(int capacity) {
+    public int capacity;
+    public Node dummyHead;
+    public Node dummyTail;
+    public HashMap<Integer, Node> mpp;
+    public LRUCache(int capacity) {
         this.capacity = capacity;
-        map = new HashMap<>();
+        dummyHead = new Node(-1, -1);
+        dummyTail = new Node(-1, -1);
+        mpp = new HashMap<>();
 
-        // Dummy nodes
-        head = new Node(-1, -1);
-        tail = new Node(-1, -1);
-
-        head.next = tail;
-        tail.prev = head;
+        dummyHead.next = dummyTail;
+        dummyTail.prev = dummyHead;
     }
 
-    // Get value
+    private void remove(Node node) {
+        Node back = node.prev;
+        Node front = node.next;
+
+        back.next = front;
+        front.prev = back;
+    }
+    
+    private void addToFront(Node node) {
+        Node prevHead = dummyHead.next;
+
+        dummyHead.next = node;
+        node.prev = dummyHead;
+
+        prevHead.prev = node;
+        node.next = prevHead;
+    }
+
     public int get(int key) {
-        if (!map.containsKey(key)) {
-            return -1;
+        if(mpp.containsKey(key)) {
+            Node node = mpp.get(key);
+            int value = node.value;
+            
+            remove(node);
+            addToFront(node);
+            
+            return value;
         }
-
-        Node node = map.get(key);
-
-        // Move accessed node to front
-        removeNode(node);
-        addToFront(node);
-
-        return node.value;
+        return -1;
     }
-
-    // Put key-value
+    
     public void put(int key, int value) {
+        if(capacity == 0) return;
 
-        if (map.containsKey(key)) {
-            Node oldNode = map.get(key);
-            removeNode(oldNode);
-            map.remove(key);
+        if(!mpp.containsKey(key)) {
+            Node node = new Node(key, value);
+            if(mpp.size() < capacity) {
+                addToFront(node);
+                mpp.put(key, node);
+            }
+            else {
+                Node lastNode = dummyTail.prev;
+                remove(lastNode);
+                addToFront(node);
+
+                mpp.remove(lastNode.key);
+                mpp.put(key, node);   
+            }
         }
+        else {
+            Node node = mpp.get(key);
+            node.value = value;
 
-        Node newNode = new Node(key, value);
-        addToFront(newNode);
-        map.put(key, newNode);
-
-        // If capacity exceeded
-        if (map.size() > capacity) {
-            Node lru = tail.prev;   // Least Recently Used
-            removeNode(lru);
-            map.remove(lru.key);
+            remove(node);
+            addToFront(node);
         }
-    }
-
-    // Remove node from DLL
-    public void removeNode(Node node) {
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-    }
-
-    // Add node just after head
-    public void addToFront(Node node) {
-        Node first = head.next;
-
-        head.next = node;
-        node.prev = head;
-
-        node.next = first;
-        first.prev = node;
     }
 }
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
