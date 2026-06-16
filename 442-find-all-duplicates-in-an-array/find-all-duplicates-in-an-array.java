@@ -1,67 +1,105 @@
-// //Time: O(n)-using map
-// //Space: O(n) (extra space for map)
-
 // class Solution {
 //     public List<Integer> findDuplicates(int[] nums) {
-//         Map<Integer, Integer> freq = new HashMap<>();
-//         List<Integer> result = new ArrayList<>();
+//         ArrayList<Integer>res = new ArrayList<>();
 
-//         for (int num : nums) {
-//             freq.put(num, freq.getOrDefault(num, 0) + 1);
-//         }
+//         HashSet<Integer>set = new HashSet<>();
 
-//         // Iterate using keySet
-//         for (Integer key : freq.keySet()) {
-//             if (freq.get(key) == 2) {
-//                 result.add(key);
+//         for(int num : nums){
+//             if(set.contains(num)){
+//                 res.add(num);
 //             }
+//             set.add(num);
 //         }
-
-//         return result;
-//     }
-// }
-
-// //tc:O(N), sc:O(1) using pop
-// class Solution {
-//     public List<Integer> findDuplicates(int[] nums) {
+//         return res;
         
-//         List<Integer> result = new ArrayList<>();
-//         for(int i = 0; i<nums.length; i++){
-//             int element = Math.abs(nums[i]);
-//             int seat = element - 1;
-//             if(nums[seat] < 0){ // duplicate
-//                 result.add(element);
-//             }else{
-//                 nums[seat] = -nums[seat];
-//             }
-//         }
-       
-
-//         return result;
 //     }
 // }
 
+// class Solution {
+//     public List<Integer> findDuplicates(int[] nums) {
+//         ArrayList<Integer>res = new ArrayList<>();
+
+//         HashMap<Integer,Integer>map = new HashMap<>();
+//         for(int num : nums){
+//             map.put(num, map.getOrDefault(num, 0) + 1);
+//         }
+
+//         for(int key : map.keySet()){
+//             if(map.get(key) == 2){
+//                 res.add(key);
+//             }
+//         }
+//         return res;
+//     }
+// }
+
+// class Solution {
+//     public List<Integer> findDuplicates(int[] nums) {
+//         ArrayList<Integer>res = new ArrayList<>();
+//         int n = nums.length;
+//         for(int i = 0; i<n; i++){
+//            int elm = Math.abs(nums[i]);
+//            int seat = elm - 1;
+
+//            if(nums[seat] < 0){
+//             res.add(elm);
+//            }else{
+//             nums[seat] = -nums[seat];
+//            }
+//         }
+//         return res;
+//     }
+// }
+
+// class Solution {
+//     public List<Integer> findDuplicates(int[] nums) {
+//         ArrayList<Integer>res = new ArrayList<>();
+
+//         HashMap<Integer, Integer>map = new HashMap<>();
+//         for(int num : nums){
+//             map.put(num, map.getOrDefault(num, 0) + 1);
+//         }
+
+//         for(int key : map.keySet()){
+//             if(map.get(key) == 2){
+//                 res.add(key);
+//             }
+//         }
+//         return res;
+//     }
+// }
+
+// class Solution {
+//     public List<Integer> findDuplicates(int[] nums) {
+//         ArrayList<Integer>res = new ArrayList<>();
+
+//         HashSet<Integer>set = new HashSet<>();
+//         for(int num : nums){
+//             if(set.contains(num)){
+//                 res.add(num);
+//             }
+//             set.add(num);
+//         }
+
+//         return res;
+//     }
+// }
 
 class Solution {
     public List<Integer> findDuplicates(int[] nums) {
-       
-       int n = nums.length;
-       List<Integer>res = new ArrayList<>();
-       for(int i = 0; i<n; i++){
-        int elm = Math.abs(nums[i]);
+        ArrayList<Integer>res = new ArrayList<>();
 
-        int seat = elm - 1;
+        for(int i = 0; i<nums.length; i++){
+            int elm = Math.abs(nums[i]);
+            int seat = elm - 1;
 
-        if(nums[seat] < 0){
-            res.add(elm);
-        }else{
+            if(nums[seat] < 0){
+                res.add(elm);
+            } 
+            else{
             nums[seat] = -nums[seat];
+            }
         }
-       }
-       return res;
+        return res;
     }
 }
-
-
-
-
