@@ -61,26 +61,22 @@
 
 class Solution {
     public boolean canBeEqual(int[] target, int[] arr) {
-       HashMap<Integer, Integer>map = new HashMap<>();
-       int n = arr.length;
-       for(int num : target){
-        map.put(num, map.getOrDefault(num, 0) + 1);
-       }
+      HashMap<Integer,Integer>map = new HashMap<>();
 
-       for(int i = 0; i<n; i++){
-           int elm = arr[i];
+      for(int t : target){
+        map.put(t, map.getOrDefault(t, 0) + 1);
+      }
 
-           if(!map.containsKey(elm)) return false;
-           map.put(elm , map.get(elm) - 1);
+      for(int elm : arr){
+        if(!map.containsKey(elm)) return false;
 
-           if(map.get(elm) == 0){
+        map.put(elm, map.get(elm) -1);
+
+        if(map.get(elm) == 0){
             map.remove(elm);
-           }
-           
-
-           
-       }
-       return map.isEmpty();
+        }
+      }
+      return map.isEmpty();
         
     }
 }
