@@ -93,39 +93,80 @@
 // }
 
 // space optimization
+// class Solution {
+//     public int coinChange(int[] coins, int amount) {
+//         int n = coins.length;
+//         // int dp[][] = new int[n][amount+1];
+//         // base case idx = 0, for amount
+//         int prev[] = new int[amount+1];
+      
+//         for(int a = 0; a <amount+1; a++){
+//            if(a % coins[0] == 0){
+//              prev[a] = a / coins[0];
+//            }else{
+//            prev[a] = (int)(1e9);
+//            }
+//         }
+//         for(int i = 1; i<n; i++){
+//             int curr[] = new int[amount+1];
+//         for(int j = 0; j<amount+1; j++){
+//             int pick = (int)(1e9);
+//             if(j >= coins[i]){
+//                 pick = 1 + curr[j-coins[i]];//rec(coins, j - coins[i], idx, dp);
+//             }
+//             int noPick = prev[j];//rec(coins, j, i-1, dp);
+
+//             curr[j] =  Math.min(pick, noPick);     
+//             }
+//             prev = curr;
+//         }
+//         if(prev[amount] == (int)(1e9)){
+//             return -1;
+//         }
+//         return prev[amount];
+       
+        
+//     }
+   
+// }
+
 class Solution {
     public int coinChange(int[] coins, int amount) {
         int n = coins.length;
-        // int dp[][] = new int[n][amount+1];
-        // base case idx = 0, for amount
-        int prev[] = new int[amount+1];
-      
-        for(int a = 0; a <amount+1; a++){
-           if(a % coins[0] == 0){
-             prev[a] = a / coins[0];
-           }else{
-           prev[a] = (int)(1e9);
-           }
-        }
-        for(int i = 1; i<n; i++){
-            int curr[] = new int[amount+1];
-        for(int j = 0; j<amount+1; j++){
-            int pick = (int)(1e9);
-            if(j >= coins[i]){
-                pick = 1 + curr[j-coins[i]];//rec(coins, j - coins[i], idx, dp);
-            }
-            int noPick = prev[j];//rec(coins, j, i-1, dp);
 
-            curr[j] =  Math.min(pick, noPick);     
+        int dp[][] = new int[n][amount+1];
+        for(int i = 0; i<n; i++){
+            for(int j = 0; j<amount+1; j++){
+                dp[i][j] = -1;
             }
-            prev = curr;
         }
-        if(prev[amount] == (int)(1e9)){
-            return -1;
-        }
-        return prev[amount];
+       
+         int ans = rec(coins, amount, n-1, dp);
+
+         return ans >= (1e9)?-1:ans;
        
         
+    }
+    public int rec(int coins[], int amount, int idx, int dp[][]){
+        if(idx == 0){
+            if(amount % coins[idx] == 0){
+                dp[idx][amount] = amount/coins[idx];
+               return amount/coins[idx];
+            }
+            dp[idx][amount] = (int)(1e9);
+            return (int)(1e9);
+        }
+        if(dp[idx][amount] != -1){
+            return dp[idx][amount];
+        }
+        int pick = (int)(1e9);
+        if(amount >= coins[idx]){
+            pick = 1 + rec(coins, amount - coins[idx], idx, dp);
+        }
+        int noPick = rec(coins, amount, idx-1, dp);
+
+        return dp[idx][amount] =  Math.min(pick, noPick);
+
     }
    
 }
