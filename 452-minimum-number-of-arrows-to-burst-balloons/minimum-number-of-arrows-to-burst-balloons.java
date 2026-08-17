@@ -72,38 +72,79 @@
 //     }
 // }
 
+// class Solution {
+//     public int findMinArrowShots(int[][] points) {
+//         int n = points.length;
+//         if(n == 1){
+//             return 1;
+//         }
+
+//         Arrays.sort(points, new Comparator<int[]>(){
+//             public int compare(int a1[], int a2[]){
+//                 if(a1[0] == a2[0]) return 0;
+//                 if(a1[0] < a2[0]) return -1;
+//                 return 1;
+//             }
+//         });
+
+//         int arrows = 1;
+//         int commonInt[] = points[0];
+//         for(int i = 1; i<n; i++){
+//             int currS = points[i][0];
+//             int currE = points[i][1];
+
+//             if(currS <= commonInt[1]){
+//                commonInt[0] = Math.max(commonInt[0], currS);
+//                commonInt[1] = Math.min(commonInt[1], currE); 
+
+//             }else{
+//                 commonInt[0] = currS;
+//                 commonInt[1] = currE;
+//                 arrows++;
+//             }
+//         }
+//         return arrows;
+
+//     }
+// }
+
 class Solution {
     public int findMinArrowShots(int[][] points) {
+        
         int n = points.length;
         if(n == 1){
             return 1;
         }
 
-        Arrays.sort(points, new Comparator<int[]>(){
-            public int compare(int a1[], int a2[]){
-                if(a1[0] == a2[0]) return 0;
-                if(a1[0] < a2[0]) return -1;
-                return 1;
-            }
-        });
+        // Arrays.sort(points, new Comparator<int[]>(){
+        //   public int compare(int a1[], int a2[]){
+        //     if(a1[0] == a2[0]) return 0;
+        //     if(a1[0] < a2[0]) return -1;
+        //     return 1;
+        //   }
+        // });
 
-        int arrows = 1;
-        int commonInt[] = points[0];
+        Arrays.sort(points, (a, b) -> Integer.compare(a[0], b[0]));
+
+        int arrow = 1;
+
+        int commanIntervals[] = points[0];
+
         for(int i = 1; i<n; i++){
             int currS = points[i][0];
             int currE = points[i][1];
 
-            if(currS <= commonInt[1]){
-               commonInt[0] = Math.max(commonInt[0], currS);
-               commonInt[1] = Math.min(commonInt[1], currE); 
+            if(currS <= commanIntervals[1]){
+                commanIntervals[0] = Math.max(commanIntervals[0], currS);
+                commanIntervals[1] = Math.min(commanIntervals[1], currE);
 
             }else{
-                commonInt[0] = currS;
-                commonInt[1] = currE;
-                arrows++;
+                commanIntervals[0] = currS;
+                commanIntervals[1] = currE;
+                arrow++;
             }
         }
-        return arrows;
+        return arrow;
 
     }
 }
