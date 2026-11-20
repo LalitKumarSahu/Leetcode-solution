@@ -143,19 +143,21 @@
 
 class Solution {
     public List<Integer> findDuplicates(int[] nums) {
+       
        int n = nums.length;
 
        ArrayList<Integer>res = new ArrayList<>();
 
-       HashSet<Integer>set = new HashSet<>();
+       for(int i = 0; i<n; i++){
+        int elm = Math.abs(nums[i]);
+        int seat = elm - 1;
 
-       for(int num : nums){
-        if(set.contains(num)){
-            res.add(num);
+        if(nums[seat] > 0){
+            nums[seat] = -nums[seat];
+        }else{
+            res.add(elm);
         }
-        set.add(num);
        }
-
        return res;
     }
 }  
