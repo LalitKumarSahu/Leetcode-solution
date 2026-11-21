@@ -26,7 +26,7 @@
 //     }
 // }
 
-// m-2
+//m-2
 // class Solution {
 //     public int minPatches(int[] nums, int n) {
 //          long sumFormed = 0;
@@ -57,27 +57,30 @@
 
 class Solution {
     public int minPatches(int[] nums, int n) {
-        long sumFormed = 0;
-        long expectedSum = 1;
-        int minPatch = 0;
-        int i = 0;
-        int m = nums.length;
+     long sumF = 0;
+     long esS = 1;
 
-        while (sumFormed < n) {
+     int i = 0;
+     int m = nums.length;
 
-            if (i < m && nums[i] <= expectedSum) {
-                // use array element
-                sumFormed += nums[i];
+     int patches = 0;
+
+     while(sumF < n){
+
+        if(sumF >= esS){
+            esS = sumF + 1;
+        }else{
+            if(i < m && esS >= nums[i]){
+                sumF += nums[i];
                 i++;
-            } else {
-                // add patch
-                minPatch++;
-                sumFormed += expectedSum;
-            }
-
-            expectedSum = sumFormed + 1;
+            }else{
+             patches++;
+             sumF += esS;
+            }   
         }
+     }
 
-        return minPatch;
+     return patches;
     }
+
 }
