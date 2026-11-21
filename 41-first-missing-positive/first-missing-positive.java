@@ -35,42 +35,35 @@
 //     }
 //  }
 
-
+   
 class Solution {
     public int firstMissingPositive(int[] nums) {
-        int n = nums.length;
+       int n = nums.length;
 
-        // filtering the array
-        for(int i = 0; i<n; i++){
-            if(nums[i] <= 0 || nums[i] > n){
-                nums[i] = n + 1;
-            }
+       for(int i = 0; i<n; i++){
+        if(nums[i] <= 0 || nums[i] > n){
+            nums[i] = n + 1;
         }
+       }
 
-        for(int i = 0; i<n; i++){
-            int elm = Math.abs(nums[i]);
-            int seat = elm - 1;
+       for(int i = 0; i<n; i++){
+        int elm = Math.abs(nums[i]);
 
-            if(elm == n + 1){
-             continue;
-            } 
-            if(nums[seat] > 0){
-                nums[seat] = -nums[seat];
-            }
-
+        if(elm == n + 1){
+            continue;
         }
-        // find 1st postive
-        for(int i = 0; i<n; i++){
-            if(nums[i] >  0){
-                return i+1;
-            }
+        int seat = elm - 1;
+
+        if(nums[seat] > 0){
+            nums[seat] = -nums[seat];
         }
-        
-        return n+1;
+       }
+
+       for(int i = 0; i<n; i++){
+        if(nums[i] > 0){
+            return i + 1;
+        }
+       }
+       return n + 1;
     }
- }
-
-
-
-
-
+}
