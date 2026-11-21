@@ -129,26 +129,26 @@
 
  class Solution {
     public boolean canBeEqual(int[] target, int[] arr) {
-     
-    Arrays.sort(target);
-    Arrays.sort(arr);
+     HashMap<Integer,Integer>map = new HashMap<>();
 
-    int n = arr.length;
+     for(int t : target){
+        map.put(t, map.getOrDefault(t, 0) + 1);
+     }
 
-    if(target.length != arr.length){
-        return false;
-    }
-
-    for(int i  = 0; i<n; i++){
-        if(target[i] != arr[i]){
+     for(int num : arr){
+        if(!map.containsKey(num))
             return false;
+
+        map.put(num, map.get(num) - 1);
+
+         if(map.get(num) == 0){
+                map.remove(num);
         }
-    }
+     }
 
-    return true;
-
-
-  
+     
+     return map.isEmpty();
+    
     }
 }
 
