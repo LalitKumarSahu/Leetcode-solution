@@ -59,26 +59,101 @@
 //     }
 // }
 
-class Solution {
-    public boolean canBeEqual(int[] target, int[] arr) {
-      HashMap<Integer,Integer>map = new HashMap<>();
+// class Solution {
+    // public boolean canBeEqual(int[] target, int[] arr) {
+    //   HashMap<Integer,Integer>map = new HashMap<>();
 
-      for(int t : target){
-        map.put(t, map.getOrDefault(t, 0) + 1);
-      }
+    //   for(int t : target){
+    //     map.put(t, map.getOrDefault(t, 0) + 1);
+    //   }
 
-      for(int elm : arr){
-        if(!map.containsKey(elm)) return false;
+    //   for(int elm : arr){
+    //     if(!map.containsKey(elm)) return false;
 
-        map.put(elm, map.get(elm) -1);
+    //     map.put(elm, map.get(elm) -1);
 
-        if(map.get(elm) == 0){
-            map.remove(elm);
-        }
-      }
-      return map.isEmpty();
+    //     if(map.get(elm) == 0){
+    //         map.remove(elm);
+    //     }
+    //   }
+    //   return map.isEmpty();
         
+    // }
+//}
+
+//  class Solution {
+//     public boolean canBeEqual(int[] target, int[] arr) {
+     
+//       Arrays.sort(arr);
+//       Arrays.sort(target);
+
+//       if(target.length != arr.length){
+//         return false;
+//       }
+//       for(int i = 0; i<arr.length; i++){
+//         if(arr[i] != target[i]){
+//             return false;
+//         }
+//       }
+//       return true;
+        
+//     }
+// }
+
+//  class Solution {
+//     public boolean canBeEqual(int[] target, int[] arr) {
+     
+//      HashMap<Integer,Integer>map1 = new HashMap<>();
+//      HashMap<Integer,Integer>map2 = new HashMap<>();
+
+//      for(int t : target){
+//         map1.put(t, map1.getOrDefault(t, 0) + 1);
+//      }
+
+//      for(int num : arr){
+//        map2.put(num, map2.getOrDefault(num, 0) + 1);
+//      }
+
+//      if(map1.size() != map2.size()){
+//         return false;
+//      }
+//      for(int key : map1.keySet()){
+//         if(!map1.get(key).equals(map2.get(key)))return false;
+//         if(!map2.containsKey(key))return false;
+//      }
+//      return true;
+
+        
+//     }
+// }
+
+ class Solution {
+    public boolean canBeEqual(int[] target, int[] arr) {
+     
+    Arrays.sort(target);
+    Arrays.sort(arr);
+
+    int n = arr.length;
+
+    if(target.length != arr.length){
+        return false;
+    }
+
+    for(int i  = 0; i<n; i++){
+        if(target[i] != arr[i]){
+            return false;
+        }
+    }
+
+    return true;
+
+
+  
     }
 }
+
+
+
+
 
 
