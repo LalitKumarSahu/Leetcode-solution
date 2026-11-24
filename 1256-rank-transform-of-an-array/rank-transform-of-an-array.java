@@ -80,27 +80,20 @@ class Solution {
     public int[] arrayRankTransform(int[] arr) {
         int n = arr.length;
 
-        List<Integer>idx = new ArrayList<>();
-        for(int i = 0; i<n; i++){
-            idx.add(i);
-        }
-        Collections.sort(idx, new Comparator<Integer>(){
-            public int compare(Integer x, Integer y){
-                return arr[x] - arr[y];
-            }
-        });
+       TreeSet<Integer>set = new TreeSet<>();
+       HashMap<Integer,Integer>map = new HashMap<>();
 
-        int prev = Integer.MAX_VALUE;
-        int rank = 0;
-        int res[] = new int[n];
-        for(int idxElm : idx){
-            if(prev != arr[idxElm]){
-                prev = arr[idxElm];
-                rank++;
-
-            }
-            res[idxElm] = rank;
-        }
-        return res;
+       for(int num : arr){
+        set.add(num);
+       }
+       int rank = 1;
+       for(int elm : set){
+        map.put(elm, rank);
+        rank++;
+       }
+       for(int i = 0; i<n; i++){
+        arr[i] = map.get(arr[i]);
+       }
+       return arr;
     }
 }
