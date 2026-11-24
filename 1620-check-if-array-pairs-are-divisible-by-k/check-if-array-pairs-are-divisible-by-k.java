@@ -23,20 +23,23 @@
 //-------->
 class Solution {
     public boolean canArrange(int[] arr, int k) {
-        int map[] = new int[k];
+       int map[] = new int[k];
 
-        for(int elm : arr){
-            int rem = ((elm % k) + k) % k;
-            map[rem]++;
-        }
-        if(map[0] % 2 != 0) return false;
+       for(int i = 0; i<arr.length; i++){
+        int rem = ((arr[i]%k) + k)%k;
+        map[rem]++;
+       }
+       if(map[0] % 2 != 0) return false;
 
-        for(int rem =1 ; rem <= k/2; rem++){
-            int com = k - rem;
+       for(int rem = 1; rem<=k/2; rem++){
+           int comp = k - rem;
 
-            if(map[rem] != map[com]) return false;
-        }
-        return true;
+           if(map[rem] != map[comp]){
+            return false;
+           }
+       }
+       return true;
+       
     }
 }
 
